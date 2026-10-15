@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Денис Давыдов — герой, поэт, партизан</title>
+  <style>
+    :root{
+      --bg:#f4efe6;
+      --paper:#fffaf2;
+      --ink:#1f1d1a;
+      --muted:#6c655d;
+      --accent:#7a2e2e;
+      --accent-2:#b58a4c;
+      --line:#d9cdbd;
+      --dark:#17201d;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Georgia, 'Times New Roman', serif;background:var(--bg);color:var(--ink);line-height:1.55}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{width:min(1100px,92%);margin:0 auto}
+    header{position:sticky;top:0;z-index:20;background:rgba(244,239,230,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{font-weight:700;letter-spacing:.03em}
+    .navlinks{display:flex;gap:14px;flex-wrap:wrap;font-size:.92rem;color:var(--muted)}
+    .navlinks a:hover{color:var(--accent)}
+    .hero{min-height:76vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:42px;padding:70px 0 56px}
+    .eyebrow{font-size:.82rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);font-weight:700}
+    h1{font-size:clamp(3rem,8vw,6.5rem);line-height:.92;margin:.2em 0 .18em}
+    .subtitle{font-size:clamp(1.1rem,2vw,1.4rem);max-width:700px;color:var(--muted)}
+    .hero-card{background:var(--dark);padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.18);transform:rotate(1.2deg)}
+    .hero-card img{aspect-ratio:4/5;object-fit:cover;filter:saturate(.9) contrast(1.05)}
+    .hero-note{margin-top:12px;color:#efe7db;font-size:.9rem}
+    .quickfacts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+    .fact{border-top:2px solid var(--accent-2);padding-top:10px}
+    .fact b{display:block;font-size:1.35rem}
+    section{padding:76px 0;border-top:1px solid var(--line)}
+    h2{font-size:clamp(2rem,5vw,3.6rem);margin:0 0 24px}
+    h3{margin-top:0}
+    .section-lead{max-width:780px;color:var(--muted);font-size:1.08rem}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:26px}
+    .card{background:var(--paper);border:1px solid var(--line);padding:22px;box-shadow:0 6px 20px rgba(46,35,21,.05)}
+    .card h3{font-size:1.2rem;margin-bottom:8px}
+    .card p{margin:0;color:var(--muted)}
+    .timeline{margin-top:28px;display:grid;gap:14px}
+    .event{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:16px 0;border-bottom:1px dashed var(--line)}
+    .year{font-weight:700;color:var(--accent)}
+    .award-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:26px}
+    .award{background:#fff;border-left:5px solid var(--accent);padding:18px 20px}
+    .award strong{display:block;margin-bottom:6px}
+    .gallery{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:28px}
+    figure{margin:0;background:var(--paper);border:1px solid var(--line);padding:14px}
+    figure img{width:100%;height:100%;max-height:520px;object-fit:cover}
+    figcaption{font-size:.92rem;color:var(--muted);padding-top:10px}
+    .stack{display:grid;gap:24px}
+    blockquote{margin:0;padding:26px;background:var(--dark);color:#f3ece2;font-size:1.18rem;position:relative}
+    blockquote::before{content:'“';font-size:4rem;position:absolute;left:14px;top:-10px;color:var(--accent-2)}
+    blockquote p{margin:0 0 10px;padding-left:24px}
+    blockquote cite{display:block;color:#cfbea8;font-size:.9rem;padding-left:24px;font-style:normal}
+    .artifact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+    .artifact{padding:20px;background:var(--paper);border:1px solid var(--line)}
+    .places{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:26px}
+    .place{padding:20px;border:1px solid var(--line);background:rgba(255,255,255,.45)}
+    .place b{color:var(--accent)}
+    .assessment{background:linear-gradient(135deg,#17201d,#293630);color:#f4efe6;padding:34px;border-radius:2px}
+    .assessment p{font-size:1.1rem;margin:0}
+    footer{padding:36px 0 56px;color:var(--muted);font-size:.9rem;text-align:center}
+    .tag{display:inline-block;border:1px solid var(--line);padding:5px 9px;margin:4px 6px 0 0;font-size:.85rem;background:var(--paper)}
+    @media (max-width:850px){
+      .hero,.grid-2,.gallery{grid-template-columns:1fr}
+      .quickfacts,.artifact-grid{grid-template-columns:1fr 1fr}
+      .award-list,.places,.cards{grid-template-columns:1fr}
+      .hero{padding-top:44px}
+      .hero-card{transform:none}
+    }
+    @media (max-width:560px){
+      .navlinks{display:none}
+      .quickfacts,.artifact-grid{grid-template-columns:1fr}
+      .event{grid-template-columns:84px 1fr}
+      section{padding:54px 0}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top">Денис Давыдов</a>
+      <div class="navlinks">
+        <a href="#bio">Биография</a>
+        <a href="#awards">Награды</a>
+        <a href="#art">Искусство</a>
+        <a href="#voices">Современники</a>
+        <a href="#artifacts">Артефакты</a>
+        <a href="#places">Места памяти</a>
+        <a href="#history">Оценка историков</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow">1784–1839 · гусар · партизан · поэт</div>
+      <h1>Денис<br>Давыдов</h1>
+      <p class="subtitle">Один из самых ярких героев Отечественной войны 1812 года: боевой офицер, командир партизанского отряда, автор военных воспоминаний и поэт.</p>
+      <div class="quickfacts">
+        <div class="fact"><b>1784</b><span>родился в Москве</span></div>
+        <div class="fact"><b>1801</b><span>начал военную службу</span></div>
+        <div class="fact"><b>1812</b><span>прославился как партизанский командир</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="bio">
+    <div class="wrap">
+      <div class="eyebrow">01 · Биография</div>
+      <h2>Основная информация</h2>
+      <div class="grid-2">
+        <div>
+          <p class="section-lead">Денис Васильевич Давыдов родился в 1784 году в Москве в военной дворянской семье. С детства интересовался военным делом, а в 1801 году начал службу.</p>
+          <div class="timeline">
+            <div class="event"><div class="year">1784</div><div>Рождение в Москве.</div></div>
+            <div class="event"><div class="year">1801</div><div>Начало военной службы.</div></div>
+            <div class="event"><div class="year">1807–1814</div><div>Участие в войнах с Наполеоном и заграничных походах.</div></div>
+            <div class="event"><div class="year">1812</div><div>Становится известен как командир партизанского отряда.</div></div>
+            <div class="event"><div class="year">1839</div><div>Скончался в селе Верхняя Маза.</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Кем он был</h3>
+          <p>Военным, гусаром, командиром летучего партизанского отряда, поэтом и автором военных мемуаров. Его образ соединяет военную доблесть и литературную культуру эпохи.</p>
+          <div style="margin-top:18px">
+            <span class="tag">Гусар</span><span class="tag">Партизан</span><span class="tag">Поэт</span><span class="tag">Мемуарист</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="wrap">
+      <div class="eyebrow">02 · Награды</div>
+      <h2>Воинская доблесть</h2>
+      <p class="section-lead">Награды Давыдова отражают участие в крупнейших военных кампаниях начала XIX века и его репутацию храброго офицера.</p>
+      <div class="award-list">
+        <div class="award"><strong>Орден Святого Георгия IV степени</strong>За отличие в боях против французских войск и проявленную храбрость.</div>
+        <div class="award"><strong>Золотая сабля «За храбрость»</strong>Почётное наградное оружие русской армии, вручавшееся за личную доблесть.</div>
+        <div class="award"><strong>Орден Святой Анны I степени</strong>Награда за важные военные заслуги и успешное командование.</div>
+        <div class="award"><strong>Орден Святого Владимира III и IV степеней</strong>Вручался за боевые заслуги и усердную службу.</div>
+        <div class="award"><strong>Virtuti Militari II степени</strong>Польский знак отличия за военное достоинство.</div>
+        <div class="award"><strong>Pour le Mérite</strong>Прусская военная награда для офицеров, отмечавшая выдающиеся заслуги.</div>
+      </div>
+      <div class="cards">
+        <div class="card"><h3>Памятные знаки</h3><p>Крест «За победу при Прейсиш-Эйлау» и медаль «В память Отечественной войны 1812 года».</p></div>
+        <div class="card"><h3>Другие кампании</h3><p>В числе памятных наград — медали, связанные со взятием Парижа и русско-персидской войной.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="art">
+    <div class="wrap">
+      <div class="eyebrow">03 · Представленность в искусстве</div>
+      <h2>От портрета до кино</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Живопись</h3>
+          <p>Один из известных портретов Дениса Давыдова был создан английским художником Джорджем Доу и его мастерской около 1827–1828 годов. Портрет входит в состав Военной галереи Зимнего дворца.</p>
+          <p>Давыдов изображён в офицерском ментике Ахтырского гусарского полка, с генеральской шинелью. На груди видны военные награды.</p>
+        </div>
+        <div class="card">
+          <h3>Кино</h3>
+          <p>В фильме «Эскадрон гусар летучих» 1980 года Денис Давыдов представлен как главный герой. Картина посвящена событиям Отечественной войны 1812 года и его жизни.</p>
+        </div>
+        <div class="card">
+          <h3>Образ в культуре</h3>
+          <p>В искусстве Давыдов закрепился как образ гусара-поэта, соединяющего военную храбрость, остроумие и литературный талант.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="voices">
+    <div class="wrap">
+      <div class="eyebrow">04 · Свидетельства современников</div>
+      <h2>Как его воспринимали</h2>
+      <div class="grid-2">
+        <blockquote>
+          <p>«Тебе певцу, тебе герою! / Не удалось мне за тобою / При громе пушечном, в огне / Скакать на бешеном коне…»</p>
+          <cite>Александр Пушкин</cite>
+        </blockquote>
+        <blockquote>
+          <p>«Стих его оригинален донельзя… и в его коротких песнях больше жизни и ума…»</p>
+          <cite>Александр Пушкин — оценка литературного стиля Давыдова</cite>
+        </blockquote>
+      </div>
+      <div class="card" style="margin-top:22px">
+        <h3>Виссарион Белинский</h3>
+        <p>По представленному материалу, Белинский подчёркивал редкое сочетание в Давыдове таланта поэта, военного писателя и храброго воина — личности, выходившей за рамки обычного.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="artifacts">
+    <div class="wrap">
+      <div class="eyebrow">05 · Артефакты</div>
+      <h2>Переписка Александра Пушкина и Дениса Давыдова</h2>
+      <p class="section-lead">Переписка Александра Пушкина и Дениса Давыдова — это диалог двух близких по духу литераторов, в котором отразились искренняя взаимная симпатия, литературное сотрудничество и приметы эпохи. Денис Давыдов был старше Пушкина на 15 лет, но это не мешало их дружескому, доверительному общению.</p>
+      <div class="card">
+        <h3>Главные темы переписки</h3>
+        <p>До наших дней дошло 14 писем Давыдова к Пушкину и 2 черновых ответа самого Пушкина. Основная их часть датируется 1834–1836 годами и сосредоточена вокруг следующих тем:</p>
+        <p><b>1. Журнал «Современник».</b> В последние годы жизни Пушкина Давыдов активно помогал ему наполнять журнал. Он присылал для публикации свои стихи и «Военные записки», например «Занятие Дрездена» и «О партизанской войне».</p>
+        <p><b>2. Борьба с цензурой.</b> Друзья обсуждали в письмах, как жёстко имперская военная цензура сокращала историческую прозу Давыдова.</p>
+        <p><b>3. Общие литературные сплетни.</b> Поэты делились новостями о критиках и издателях, в том числе язвительно отзывались о редакторе Сенковском, а также обсуждали творчество общих знакомых.</p>
+        <p><b>4. Сбор материалов о кавалерист-девице.</b> Пушкин просил Давыдова поделиться воспоминаниями о Надежде Дуровой, служившей в одном арьергарде с Ахтырским гусарским полком Давыдова, для последующей публикации её мемуаров.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="places">
+    <div class="wrap">
+      <div class="eyebrow">06 · Места памяти</div>
+      <h2>География памяти</h2>
+      <div class="places">
+        <div class="place"><b>Бородинское поле, Московская область</b><p>Связано с событиями 1812 года и идеей создания летучего партизанского отряда. На месте установлены памятные знаки, связанные с Давыдовым и Ахтырскими гусарами.</p></div>
+        <div class="place"><b>Село Ляхово, Смоленская область</b><p>Место одного из самых известных партизанских успехов — окружения и капитуляции крупного французского отряда.</p></div>
+        <div class="place"><b>Вязьма и Царёво-Займище</b><p>Ключевые точки рейдов летучего отряда Давыдова по французским тылам осенью 1812 года.</p></div>
+        <div class="place"><b>Верхняя Маза, Ульяновская область</b><p>Здесь Давыдов провёл последние годы жизни, занимаясь литературой, мемуарами и хозяйством. Здесь же он умер в 1839 году.</p></div>
+        <div class="place"><b>Пречистенка, Москва</b><p>Городская усадьба Давыдова, приобретённая в 1835 году; связана с литературной жизнью Москвы.</p></div>
+        <div class="place"><b>Мышецкое, Московская область</b><p>Имение, где Давыдов жил в 1820-х годах и писал стихи о военной службе и гусарском братстве.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="history">
+    <div class="wrap">
+      <div class="eyebrow">07 · Оценка историков</div>
+      <h2>Оценка историков</h2>
+      <div class="assessment">
+        <p><b>Дмитрий Суржик</b> характеризует Дениса Давыдова как выдающегося командира и идеолога партизанского движения, одного из символов 1812 года. <b>Евгений Тарле</b> отмечал пользу партизанской разведки и нападений на обозы, но считал действия партизан вспомогательными по отношению к основной армии.</p>
+        <p><b>А. И. Попов</b> разграничивает армейские партизанские отряды и крестьянское сопротивление: Давыдов командовал военным отрядом, а не всем народным движением. Считать его единственным создателем партизанской войны неверно, поскольку подобные действия организовывали и другие военачальники.</p>
+        <p>Важная заслуга Давыдова — обобщение боевого опыта в труде <b>«Опыт теории партизанского действия» (1821)</b>, благодаря которому он известен не только как командир, но и как теоретик партизанской войны.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"></div>
+</footer>
+</body>
+</html>
